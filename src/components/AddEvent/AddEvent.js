@@ -16,7 +16,7 @@ function AddEvent() {
       imageUrl: imgUrl
     }
 
-    fetch(`http://localhost:5000/addEvent`, {
+    fetch(`https://boiling-oasis-42648.herokuapp.com/addEvent`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -51,7 +51,10 @@ function AddEvent() {
               <Form.Control type="file" name="eventImageUrl" ref={register({ required: true })} onChange={handleImageUplaod} />
               {errors.eventImageUrl ? <span className="text-danger">event need an image</span> : <span className="text-info">select an imgage</span>}
             </Form.Group>
-            <Button variant="primary" type="submit">Submit</Button>
+            {imgUrl === '' ? 
+              <Button variant="primary" type="submit" disabled>Submit</Button> :
+              <Button variant="primary" type="submit">Submit</Button>
+            }
           </Form>
         </Card.Body>
       </Card>

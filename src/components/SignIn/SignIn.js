@@ -24,7 +24,7 @@ function SignIn() {
   const onSubmit = data => {
     setErrorMsg('');
     if (isNewUser) {
-      fetch(`http://localhost:5000/signup`, {
+      fetch(`https://boiling-oasis-42648.herokuapp.com/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -40,7 +40,7 @@ function SignIn() {
           }
         })
     } else {
-      fetch(`http://localhost:5000/signin?email=${data.email}&password=${data.password}`)
+      fetch(`https://boiling-oasis-42648.herokuapp.com/signin?email=${data.email}&password=${data.password}`)
       .then(res => res.json())
       .then(data => {
         if(data.error){

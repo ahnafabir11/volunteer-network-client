@@ -8,12 +8,13 @@ import { Card } from 'react-bootstrap';
 function Home() {
   
   const [events, setEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/events`)
+    fetch(`https://boiling-oasis-42648.herokuapp.com/events`)
       .then(res => res.json())
       .then(data => {
-
+        setIsLoading(false);
         setEvents(data.reverse());
       })
   })
@@ -21,6 +22,13 @@ function Home() {
   return (
     <div className="Home">
       <div className="container">
+        { isLoading &&
+          <div className="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        }
         <div className="d-flex justify-content-around flex-wrap">
           {
             events.map((event, idx)=> {
@@ -34,6 +42,7 @@ function Home() {
               )
             })
           }
+          
         </div>
       </div>
     </div>
