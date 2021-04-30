@@ -2,7 +2,7 @@ import './Home.css';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card, Form } from 'react-bootstrap';
 
 
 function Home() {
@@ -22,6 +22,11 @@ function Home() {
   return (
     <div className="Home">
       <div className="container">
+        <h2 className="text-center pb-3">I GROW BY HELPING PEOPLE IN NEED</h2>
+        <Form.Group style={{width: '300px', display: 'flex', margin: '0px auto 2rem auto'}}>
+          <Form.Control type="text" name="searchEvent" placeholder="search events...." disabled />
+          <Button disabled>Search</Button>
+        </Form.Group>
         { isLoading &&
           <div className="d-flex justify-content-center">
             <div class="spinner-border text-primary" role="status">
